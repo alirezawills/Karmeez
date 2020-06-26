@@ -1,0 +1,24 @@
+
+  <abp-modal-header
+title="جستجوی کاربر"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="input-group input-group-sm">
+      <input type="text" [(ngModel)]="userNameOrEmail"  class="form-control">
+      <span class="input-group-append">
+        <button type="button" (click)="searchUser()"  class="btn btn-info btn-flat">جستجو</button>
+      </span>
+    </div>
+<div class="card card-success" [hidden]="!isUserFinde">
+  <div class="card-body">
+    <h6 class="text-primary">{{model.userName}}</h6>
+    <h6 class="text-primary">{{model.emailAddress}}</h6>
+  </div>
+
+  <button type="button" (click)="saveConfirm()"  class="btn btn-info btn-flat">ارسال</button>
+</div>
+
+  </div>
+
+

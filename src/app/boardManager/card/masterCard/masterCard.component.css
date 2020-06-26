@@ -1,0 +1,13 @@
+@media only screen and (min-width: 700px) {
+    .testimonial-group > .row {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        flex-wrap: inherit;
+      }
+      .testimonial-group > .row > .col-md-3 {
+        display: inline-block !important;
+        float: none !important;
+      }
+  }
+
+

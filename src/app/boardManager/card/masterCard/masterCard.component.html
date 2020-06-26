@@ -1,0 +1,78 @@
+<div [@routerTransition]>
+  <section class="content px-2" style="margin-top: 5px;">
+    <div class="container-fluid testimonial-group">
+      <h5 class="text-primary col-md-4">
+        {{ boradDto.nameBoard }}
+        <span
+          style="cursor: pointer;"
+          class="fas fa-plus-square"
+          (click)="isNewCard = !isNewCard"
+        ></span>
+        <input
+          type="text"
+          (blur)="createMasterCard()"
+          class="form-control"
+          placeholder="اضافه کردن برگ"
+          [(ngModel)]="masterCardDto.title"
+          [hidden]="!isNewCard"
+        />
+      </h5>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-md-3" *ngFor="let mastercard of masterCardDtos">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3
+                [hidden]="mastercard.isEditCard"
+                class="card-title"
+                (click)="mastercard.isEditCard = !mastercard.isEditCard"
+              >
+                {{ mastercard.title }}
+              </h3>
+              <div class="card-tools">
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="remove"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <input
+                style="text-align: right;"
+                [hidden]="!mastercard.isEditCard"
+                [(ngModel)]="mastercard.title"
+                (blur)="updateMasterCard(mastercard)"
+                type="text"
+                class="card-title form-control"
+              />
+            </div>
+            <div class="card card-outline card-primary" style="margin: 5px;">
+              <!-- /.card-header -->
+              <div class="card-body">
+                The body of the card
+              </div>
+
+              <!-- /.card-body -->
+              <div class="card-footer">علیرضا</div>
+            </div>
+            <div class="card card-outline card-primary" style="margin: 5px;">
+              <!-- /.card-header -->
+              <div class="card-body">
+                The body of the card
+              </div>
+
+              <!-- /.card-body -->
+              <div class="card-footer">علیرضا</div>
+            </div>
+            <div class="card-footer">
+              jsj
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

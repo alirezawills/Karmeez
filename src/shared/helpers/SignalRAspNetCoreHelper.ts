@@ -1,0 +1,47 @@
+import { AppConsts } from '@shared/AppConsts';
+import { UtilsService } from 'abp-ng2-module';
+
+export class SignalRAspNetCoreHelper {
+    static initSignalR(callback?: () => void): void {
+        const encryptedAuthToken = new UtilsService().getCookieValue(AppConsts.authorization.encryptedAuthTokenName);
+
+        abp.signalr = {
+            autoConnect: true,
+            connect: undefined,
+            hubs: undefined,
+            qs: AppConsts.authorization.encryptedAuthTokenName + '=' + encodeURIComponent(encryptedAuthToken),
+            remoteServiceBaseUrl: AppConsts.remoteServiceBaseUrl,
+            startConnection: undefined,
+            url: '/signalr'
+        };
+
+        // const script = document.createElement('script');
+        // if (callback) {
+        //     script.onload = () => {
+        //         callback();
+        //     };
+        // }
+        // script.src = AppConsts.appBaseUrl + '/assets/abp/abp.signalr-client.js';
+        // document.head.appendChild(script);
+
+        // jQuery.getScript(AppConsts.appBaseUrl + '/assets/abp/abp.signalr-client.js', () => {
+
+
+        //     abp.signalr.startConnection('/signalr-chathub', function (connection) {
+        //         AppConsts.connection = connection; // Save a reference to the hub
+
+        //         AppConsts.connection.on('getMessage', function (message) { // Register for incoming messages
+        //             console.log('received message: ' + message);
+        //         });
+        //     }).then(function (connection) {
+        //         abp.log.debug('Connected to hitchHub server!');
+        //         abp.event.trigger('hitchHub.connected');
+        //     });
+
+        //     abp.event.on('hitchHub.connected', function() { // Register for connect event
+        //         AppConsts.connection.invoke('sendMessage', 'Hi everybody, I\'m connected to the chat!');
+        //         console.log('ارسال پیام');// Send a message to the server
+        //     });
+        // });
+    }
+}

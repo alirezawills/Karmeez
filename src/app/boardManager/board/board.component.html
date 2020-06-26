@@ -1,0 +1,43 @@
+<div [@routerTransition]>
+
+    <section class="content px-2" style="margin-top: 5px;">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div *ngFor="let board of boardsDto" class="col-lg-3 col-6">
+                    <div class="small-box" [ngStyle]="{'background-color': board.color}">
+                        <div class="inner" (click)="goToCardPage(board)">
+                            <h5 style="color: aliceblue;">{{board.nameBoard}}</h5>
+
+                        </div>
+                        <!-- <div class="icon">
+            <i class="fas fa-star"></i>
+          </div> -->
+                        <div  class="small-box-footer text-left">
+                           
+                            <i  class="fas fa-trash-alt my-delete" (click)="deleteBoard(board.id)"></i>
+                            <i *ngIf="board.isManager" class="fas fa-edit my-delete" (click)="updateMode(board.id,board.nameBoard,isUpdateBoard)"></i>
+                            <i *ngIf="board.isManager" class="fas fa-user-plus my-delete" (click)="acceptUser(board.id)"></i>
+                            <span style="margin: 5px;">
+                                {{board.userNameManager}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-primary elevation-1">
+              <i class="fas fa-plus-circle"></i>
+            </span>
+            <div class="info-box-content">
+                <input class="form-control" type="text" (blur)="createBoard()" [(ngModel)]="board.nameBoard" placeholder="نام میز کار">
+
+            </div>
+        </div>
+    </div>
+
+</div>
